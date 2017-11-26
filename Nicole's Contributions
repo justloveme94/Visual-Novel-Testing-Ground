@@ -137,7 +137,7 @@ label nameMC:
     $ mc = mc.title()
     s "[mc]...well on behalf of the local squirrel feeding club, I welcome you!"
     menu:    
-        "You want to name them [name]?"
+        "You want to name them [mc]?"
         "No":
             jump nameMc
         "Yes":
