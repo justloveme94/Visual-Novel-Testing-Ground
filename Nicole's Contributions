@@ -47,30 +47,6 @@ define a = Character('Adam', color="#8B2323")
 define s = Character('Peanuts the Squirrel', color="#8B4513")
 # Peanuts the fairy god squirrel, age ???
 
-screen input(prompt):
-    style_prefix "input"
-
-    window:
-
-        vbox:
-            xalign gui.dialogue_text_xalign
-            xpos gui.dialogue_xpos
-            xsize gui.dialogue_width
-            ypos gui.dialogue_ypos
-
-            text prompt style "input_prompt"
-            input id "input"
-
-style input_prompt is default
-
-style input_prompt:
-    xalign gui.dialogue_text_xalign
-    properties gui.text_properties("input_prompt")
-
-style input:
-    xalign gui.dialogue_text_xalign
-    xmaximum gui.dialogue_width
-
 # bg = Backgrounds for Visual Novel
 image bg cafe_inside_night = "bg cafe_inside_night.png"
 image bg cafe_inside_day = "bg cafe_inside_day.png"
