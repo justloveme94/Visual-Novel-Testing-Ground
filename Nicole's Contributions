@@ -1,0 +1,123 @@
+# Coding for Ren'Py
+
+# bg = Backgrounds for Visual Novel
+image bg cafe_inside_night = "bg cafe_inside_night.png"
+image bg cafe_inside_day = "bg cafe_inside_day.png"
+image bg classroom_morning = "bg classroom_morning.png"
+image bg classroom_afternoon = "bg classroom_afternoon.png"
+image bg classroom_evening = "bg classroom_evening.png"
+image bg hallway_morning = "bg hallway_morning.png"
+image bg hallway_afternoon = "bg hallway_afternoon.png"
+image bg hallway_evening = "bg hallway_evening.png"
+image bg hospital = "bg hosptial.png"
+image bg lab = "bg lab.png"
+image bg stage_instruments = "bg stage_instruments.png"
+image bg bookstore = "bg bookstore.png"
+image bg arcade = "bg arcade.png"
+image bg outside_school_day = "bg outside_school_day.png"
+image bg park_day = "bg park_day.png"
+image bg park_evening = "bg park_evening.png"
+image bg icecream_shop = "bg icecream_shop.png"
+image bg party_house = "bg party_house.png"
+
+# Character Images
+image mc_normal = "mc_normal.png"
+image mc_happy = "mc_happy.png"
+image mc_sad = "mc_sad.png"
+image mc_angry = "mc_angry.png"
+image mc_blushing = "mc_blushing.png"
+image henry_normal = "henry_normal.png"
+image henry_happy = "henry_happy.png"
+image henry_sad = "henry_sad.png"
+image henry_angry = "henry _angry.png"
+image henry_blushing = "henry_blushing.png"
+# Henry's default clothes should be professional yet something that could be worn causally?
+image peanuts_the_squirrel = "peanuts_the_squirrel.png"
+
+init:
+  $ mc = ""
+define player = DynamicCharacter("mc")
+# Gives player the ability to name player character
+define m = Character('Melanie', color="#FFC1C1")
+# Melanie, age 19, player's roommate
+define p = Character('Dr. Ashton, color="#42426F")
+# Dr. Henry Ashton, age 28, professor of biology at the local university
+define a = Character('Adam', color="#8B2323")
+# Adam, age 20, local musician and university student
+define s = Character('Peanuts the Squirrel', color="#8B4513")
+# Peanuts the fairy god squirrel, age ???
+
+# bg = Backgrounds for Visual Novel
+image bg cafe_inside_night = "bg cafe_inside_night.png"
+image bg cafe_inside_day = "bg cafe_inside_day.png"
+image bg classroom_morning = "bg classroom_morning.png"
+image bg classroom_afternoon = "bg classroom_afternoon.png"
+image bg classroom_evening = "bg classroom_evening.png"
+image bg hallway_morning = "bg hallway_morning.png"
+image bg hallway_afternoon = "bg hallway_afternoon.png"
+image bg hallway_evening = "bg hallway_evening.png"
+image bg hospital = "bg hosptial.png"
+image bg lab = "bg lab.png"
+image bg stage_instruments = "bg stage_instruments.png"
+image bg bookstore = "bg bookstore.png"
+image bg arcade = "bg arcade.png"
+image bg outside_school_day = "bg outside_school_day.png"
+image bg park_day = "bg park_day.png"
+image bg park_evening = "bg park_evening.png"
+image bg icecream_shop = "bg icecream_shop.png"
+image bg party_house = "bg party_house.png"
+
+# Character Images
+image mc_normal = "mc_normal.png"
+image mc_happy = "mc_happy.png"
+image mc_sad = "mc_sad.png"
+image mc_angry = "mc_angry.png"
+image mc_blushing = "mc_blushing.png"
+image henry_normal = "henry_normal.png"
+image henry_happy = "henry_happy.png"
+image henry_sad = "henry_sad.png"
+image henry_angry = "henry _angry.png"
+image henry_blushing = "henry_blushing.png"
+# Henry's default clothes should be professional yet something that could be worn causally?
+image peanuts_the_squirrel = "peanuts_the_squirrel.png"
+
+init:
+    $ mc = ""
+
+define player = DynamicCharacter("mc")
+# Gives player the ability to name player character
+define m = Character('Melanie', color="#FFC1C1")
+# Melanie, age 19, player's roommate
+define p = Character('Dr. Ashton', color="#42426F")
+# Dr. Henry Ashton, age 28, professor of biology at the local university
+define a = Character('Adam', color="#8B2323")
+# Adam, age 20, local musician and university student
+define s = Character('Peanuts the Squirrel', color="#8B4513")
+# Peanuts the fairy god squirrel, age ???
+
+label start:
+    scene bg park_day
+    show peanuts_the_squirrel
+    s "Why hello! First day of university?"
+    s "What's your name?"
+label nameMC:
+    $ mc = renpy.input("Please give your character a name. Max 10 characters", allow=" 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", length=10)
+    if mc == "":
+        "Please give your character a name that is between 2-10's characters long."
+        jump nameMc
+    if mc is not None:
+        $ check_name = len(mc)
+        if check_name == 1:
+            "You must name your character a minimum of 2 letters."
+            jump nameMC
+    $ mc = mc.title()
+    s "[mc]...well on behalf of the local squirrel feeding club, I welcome you!"
+    menu:    
+        "You want to name them [mc]?"
+        "No":
+            jump nameMc
+        "Yes":
+            pass
+    player "I'm just new."
+    # game continues  
+    return
